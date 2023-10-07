@@ -30,29 +30,24 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
-  for (int i = 0; i < 100; i++){
+  for (int i = 0; i < 10; i++){
     digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-    delay(10);                      // wait for a second
+    delay(700);                       // wait for a second
     digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-    delay(10);
+    delay(700);
   }
-  for (int i = 0; i < 200; i++){
+  for (int i = 0; i < 20; i++){
     digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-    delay(5);                      // wait for a second
+    delay(500);                       // wait for a second
     digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-    delay(5);
+    delay(500);
   }
   
   for (int i = 0; i < 50; i++){
     digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-    delay(20);                      // wait for a second
+    delay(200);                       // wait for a second
     digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-    delay(20);
-  }
-  delay(1000);                      
+    delay(200);
+  }                     
 }
 
-void blink(){
-
-
-}
