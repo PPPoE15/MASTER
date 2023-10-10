@@ -1,4 +1,5 @@
 function [points, stable] = special_points(func, arg)
+    x = arg(1);
     point_struct = solve(func, arg, 'Real',true, 'ReturnConditions',true);  % roots structure
     points = point_struct.x;
     if size(point_struct.parameters, 2) > 0  % check if func is periodic
