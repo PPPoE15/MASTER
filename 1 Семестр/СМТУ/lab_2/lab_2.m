@@ -1,9 +1,9 @@
 clc, clear
-sys = @ (t,x) [2*x^6 - x^4 - 5*x^2 - 2];
+sys = @ (t,x) [0.25*x(1); -3*x(2)];
 Tspan = [0 1];
-X0 = [1.4143];
+X0 = [0, 0];
 [t, x] = ode45(sys,Tspan,X0);
-plot(t,x)
+plot(x(:,1),x(:,2), '.')
 
 % hold on
 % for i=0:5
