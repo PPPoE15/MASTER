@@ -1,20 +1,18 @@
 function [points, stable] = special_points(func, arg)
+    point_struct = struct2cell(solve(func, arg, 'Real',true, 'ReturnConditions',true));  % roots structure
     switch size(arg,2)
         case 1
-            point_struct = solve(func, arg, 'Real',true, 'ReturnConditions',true);  % roots structure
-            fields = fieldnames(point_struct);
-            x = char(fields(1));
-            points = point_struct.x;
-            if size(point_struct.parameters, 2) > 0  % check if func is periodic
+            points = point_struct{1, 1};
+            if size(point_struct{2, 1}, 2) > 0  % check if func is periodic
                 period_counter = 0;  % periodic roots counter
                 j = 0;  % integer iterator for periodic roots
                 points = [];
-                while period_counter < size(point_struct.x,1)
-                    for i = 1:size(point_struct.x,1)
-                        if subs(point_struct.x(i),point_struct.parameters,j) < 2*pi && subs(point_struct.x(i),point_struct.parameters,j) >= 0  % check if the root within the peroid
-                            points = [points; subs(point_struct.x(i),point_struct.parameters,j)];  % append new roots
+                while period_counter < size(point_struct{1, 1},1)
+                    for i = 1:size(point_struct{1, 1},1)
+                        if subs(point_struct{1, 1}(i),point_struct{2, 1},j) < 2*pi && subs(point_struct{1, 1}(i),point_struct{2, 1},j) >= 0  % check if the root within the peroid
+                            points = [points; subs(point_struct{1, 1}(i),point_struct{2, 1},j)];  % append new roots
                         else 
-                            if subs(point_struct.x(i),point_struct.parameters,j) >= 0
+                            if subs(point_struct{1, 1}(i),point_struct{2, 1},j) >= 0
                                 period_counter = period_counter + 1;
                             end
                         end
@@ -34,39 +32,9 @@ function [points, stable] = special_points(func, arg)
             end
 
         case 2
-            point_struct = solve(func, arg, 'Real',true, 'ReturnConditions',true);  % roots structure
-%             fields = fieldnames(point_struct);
-%             syms x y
-%             x = subs(x, x, fields{1, 1});
-%             y = subs(y, y, fields{2, 1});
-            points = [point_struct.x point_struct.y];
-            if size(point_struct.parameters, 2) > 0  % check if func is periodic
-                period_counter = 0;  % periodic roots counter
-                j = 0;  % integer iterator for periodic roots
-                points = [];
-                while period_counter < size(point_struct.x,1)
-                    for i = 1:size(point_struct.x,1)
-                        if subs(point_struct.x(i),point_struct.parameters,j) < 2*pi && subs(point_struct.x(i),point_struct.parameters,j) >= 0  % check if the root within the peroid
-                            points = [points; subs(point_struct.x(i),point_struct.parameters,j)];  % append new roots
-                        else 
-                            if subs(point_struct.x(i),point_struct.parameters,j) >= 0
-                                period_counter = period_counter + 1;
-                            end
-                        end
-                    end
-                    j = j + 1;
-                end
-            end
+            points = [point_struct{1, 1} point_struct{2, 1}];
+            
             points = eval(points);
-%             df = diff(func);
-%             stable = subs(df, arg, points);
-%             for i = 1:size(stable,1)
-%                 if eval(stable(i)) < 0
-%                     stable(i) = 'stable';
-%                 else
-%                     stable(i) = 'unstable';
-%                 end
-%             end
             A(1,1) = diff(func(1),arg(1));
             A(1,2) = diff(func(1),arg(2));
             A(2,1) = diff(func(2),arg(1));
