@@ -1,4 +1,4 @@
-function [points, stable] = special_points(func, arg)
+function [points, type] = special_points(func, arg)
     point_struct = struct2cell(solve(func, arg, 'Real',true, 'ReturnConditions',true));  % roots structure
     switch size(arg,2)
         case 1
@@ -22,12 +22,12 @@ function [points, stable] = special_points(func, arg)
             end
             points = eval(points);
             df = diff(func);
-            stable = subs(df, arg, points);
-            for i = 1:size(stable,1)
-                if eval(stable(i)) < 0
-                    stable(i) = 'stable';
+            type = subs(df, arg, points);
+            for i = 1:size(type,1)
+                if eval(type(i)) < 0
+                    type(i) = 'stable';
                 else
-                    stable(i) = 'unstable';
+                    type(i) = 'unstable';
                 end
             end
 
@@ -46,8 +46,32 @@ function [points, stable] = special_points(func, arg)
                 A1 = eval(subs(A1,arg(2),points(j,2)));
                 a(:,j) =   eig(A1);
             end
-            
-            stable = a';
+            eigenvalues = a';
+            type = string(zeros(size(eigenvalues, 1),1));
+
+            for i = 1:size(eigenvalues,1)
+                if imag(eigenvalues(i,1)) == 0 % check if imaginary part is zero
+                    if real(eigenvalues(i,1)) * real(eigenvalues(i,2)) < 0
+                        type(i) = 'saddle';
+                    else 
+                        if real(eigenvalues(i,1)) >= 0
+                            type(i) = 'unstable node';
+                        else
+                            type(i) = 'stable node';
+                        end    
+                    end
+                else
+                    if real(eigenvalues(i,1)) == 0
+                        type(i) = 'center';
+                    else 
+                        if real(eigenvalues(i,1)) >= 0
+                            type(i) = 'unstable focus';
+                        else
+                            type(i) = 'stable focus';
+                        end
+                            
+                    end
+                end
+            end
     end
-    
 end
