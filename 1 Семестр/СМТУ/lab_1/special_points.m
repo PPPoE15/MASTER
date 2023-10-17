@@ -33,22 +33,19 @@ function [points, type] = special_points(func, arg)
 
         case 2
             points = [point_struct{1, 1} point_struct{2, 1}];
-            
             points = eval(points);
             A(1,1) = diff(func(1),arg(1));
             A(1,2) = diff(func(1),arg(2));
             A(2,1) = diff(func(2),arg(1));
             A(2,2) = diff(func(2),arg(2));
             a = [0; 0];
-            for j = 1:size(points,1)
-                
+            for j = 1:size(points,1)   
                 A1 = subs(A,arg(1),points(j,1));
                 A1 = eval(subs(A1,arg(2),points(j,2)));
                 a(:,j) =   eig(A1);
             end
             eigenvalues = a';
             type = string(zeros(size(eigenvalues, 1),1));
-
             for i = 1:size(eigenvalues,1)
                 if imag(eigenvalues(i,1)) == 0 % check if imaginary part is zero
                     if real(eigenvalues(i,1)) * real(eigenvalues(i,2)) < 0
