@@ -1,0 +1,40 @@
+[System]
+Name='tips'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='input1'
+Range=[0 10]
+NumMFs=3
+MF1='slow':'gaussmf',[1.699 -0.0831]
+MF2='normal':'gaussmf',[1.77 5]
+MF3='fast':'gaussmf',[1.771 10]
+
+[Input2]
+Name='input2'
+Range=[0 10]
+NumMFs=2
+MF1='awful':'trapmf',[-3.54 -0.708245243128964 2.31 3.96]
+MF2='tasty':'trapmf',[5.98 7.98 10 15]
+
+[Output1]
+Name='output1'
+Range=[0 30]
+NumMFs=3
+MF1='chip':'trimf',[0 0.159 10]
+MF2='average':'trimf',[10 15 20]
+MF3='generous':'trimf',[20 30 30]
+
+[Rules]
+1 1, 1 (1) : 2
+2 2, 2 (1) : 2
+3 2, 3 (1) : 2
