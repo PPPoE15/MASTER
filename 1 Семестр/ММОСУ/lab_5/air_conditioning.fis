@@ -4,7 +4,7 @@ Type='mamdani'
 Version=2.0
 NumInputs=2
 NumOutputs=1
-NumRules=3
+NumRules=6
 AndMethod='min'
 OrMethod='max'
 ImpMethod='min'
@@ -12,30 +12,32 @@ AggMethod='max'
 DefuzzMethod='centroid'
 
 [Input1]
-Name='temp'
+Name='temperature'
 Range=[-12 12]
 NumMFs=3
-MF1='cold':'trimf',[-22 -12 -1.77635683940025e-15]
-MF2='comfortable':'trimf',[-10 -3.958 4]
-MF3='hot':'trimf',[-0.405919661733618 12 22]
+MF1='weHot':'gauss2mf',[3.4 -13.7 6.35168927332373 -12.6666666666667]
+MF2='weOk':'gaussmf',[0.404438952518103 0]
+MF3='weCold':'gauss2mf',[6.63752568794245 12.9206349206349 3.4 13]
 
 [Input2]
-Name='speed_temp'
+Name='tempSpeed'
 Range=[-2 2]
 NumMFs=3
-MF1='cooling':'trimf',[-3 -2 0]
-MF2='maintenance':'trimf',[-0.5 0 0.5]
-MF3='warming-up':'trimf',[0 2 3.667]
+MF1='Cooling':'gauss2mf',[0.37 -2.36 0.55148239468969 -2.02645502645503]
+MF2='Maintance':'gaussmf',[0.4247 0]
+MF3='Heating':'gauss2mf',[0.605 2.12503147632028 0.566 2.32]
 
 [Output1]
-Name='degree_driving_model'
-Range=[-15 15]
-NumMFs=3
-MF1='Colder':'trimf',[-27.5 -15 -0.190274841437633]
-MF2='Normal':'trimf',[-12.5 0 12.5]
-MF3='Warmer':'trimf',[-0.253699788583509 15 27.5]
+Name='driverDegree'
+Range=[-20 20]
+NumMFs=2
+MF1='cooling':'gauss2mf',[5.663 -21.67 6.795 -18]
+MF2='heating':'gauss2mf',[6.795 18.11 5.663 21.77]
 
 [Rules]
-1 1, 3 (1) : 1
-1 2, 3 (1) : 1
-1 3, 3 (1) : 1
+1 1, 1 (1) : 1
+3 1, 2 (1) : 1
+2 3, 1 (1) : 1
+1 2, 1 (1) : 1
+3 2, 2 (1) : 1
+2 1, 2 (1) : 1
