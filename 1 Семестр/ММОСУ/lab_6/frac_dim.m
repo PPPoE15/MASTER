@@ -1,4 +1,4 @@
-function D = cor_integral(x, r, N)
+function D = frac_dim(x, r, N)
 C = 0;
     for i = 1:N
         for j = 1:N
