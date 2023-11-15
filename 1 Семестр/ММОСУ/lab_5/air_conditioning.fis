@@ -15,9 +15,9 @@ DefuzzMethod='centroid'
 Name='temperature'
 Range=[-12 12]
 NumMFs=3
-MF1='weHot':'gauss2mf',[3.4 -13.7 6.35168927332373 -12.6666666666667]
+MF1='weHot':'gbellmf',[7.71 2.62599496932273 -9.59]
 MF2='weOk':'gaussmf',[0.404438952518103 0]
-MF3='weCold':'gauss2mf',[6.63752568794245 12.9206349206349 3.4 13]
+MF3='weCold':'gbellmf',[7.86 2.01 10.6767019027484]
 
 [Input2]
 Name='tempSpeed'
