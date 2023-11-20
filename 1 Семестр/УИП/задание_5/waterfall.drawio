@@ -1,0 +1,69 @@
+<mxfile host="app.diagrams.net" modified="2023-11-20T14:50:52.220Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="B57Nr7TMzNv_mqGWebLc" version="22.1.3" type="device">
+  <diagram name="Страница — 1" id="sAHhv5Q1X8mElScmmvgq">
+    <mxGraphModel dx="988" dy="532" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-2" value="&lt;b&gt;Инициатор проекта&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="370" y="370" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-3" value="&lt;b&gt;Разработчик ПО&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="260" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-4" value="&lt;b&gt;Разработчик устройства&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="590" y="480" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="3ZikdHo6xvOxgcRpDaZH-2" target="3ZikdHo6xvOxgcRpDaZH-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="260" y="270" as="sourcePoint" />
+            <mxPoint x="520" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-16" value="Задания по фукционалу" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3ZikdHo6xvOxgcRpDaZH-5">
+          <mxGeometry x="-0.2022" relative="1" as="geometry">
+            <mxPoint x="10" y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-6" value="&lt;b&gt;Клиент&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="370" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-8" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="3ZikdHo6xvOxgcRpDaZH-6" target="3ZikdHo6xvOxgcRpDaZH-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="460" as="sourcePoint" />
+            <mxPoint x="190" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-19" value="Потребности рынка" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-30;" vertex="1" connectable="0" parent="3ZikdHo6xvOxgcRpDaZH-8">
+          <mxGeometry x="-0.1347" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-9" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="3ZikdHo6xvOxgcRpDaZH-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="510" as="sourcePoint" />
+            <mxPoint x="650" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-17" value="Договор о поддержке функционала" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3ZikdHo6xvOxgcRpDaZH-9">
+          <mxGeometry x="-0.1191" relative="1" as="geometry">
+            <mxPoint x="10" y="-23" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-10" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="3ZikdHo6xvOxgcRpDaZH-4" target="3ZikdHo6xvOxgcRpDaZH-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="490" as="sourcePoint" />
+            <mxPoint x="230" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-18" value="Требования по внешнему виду&lt;br&gt;&amp;nbsp;и характеристикам" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=-15;" vertex="1" connectable="0" parent="3ZikdHo6xvOxgcRpDaZH-10">
+          <mxGeometry x="0.1249" relative="1" as="geometry">
+            <mxPoint x="27" y="21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ZikdHo6xvOxgcRpDaZH-15" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Классическая Waterfall-модель&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="240" width="280" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
