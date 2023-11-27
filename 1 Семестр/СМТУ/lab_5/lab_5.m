@@ -1,11 +1,7 @@
 clc, clear, close all
 syms a x y
 x = [x y];
-% f = a*x - x^3
-% f = (a-1)*x-x^2
-% f = x^2 + 0.25*a - 1
-% f = a * (1 - x(1)^2) * x(2) - x(1);
-% f = [x(2);  a*(1 - x(1)^2) * x(2) - x(1)];
+
 f = [x(1)^2 - x(2)^2 - 5; a * x(1)^2 + x(2)^2 - 13];
 
 A = [-1, 3]; % range a
@@ -19,21 +15,48 @@ center_array = zeros(3,0);
 unstable_focus_array = zeros(3,0);
 stable_focus_array = zeros(3,0);
 
-figure(1)
-hold on
+
 for i = linspace(A(1,1),A(1,2),nA)
     g = subs(f, a, i);
     [coord, type] = special_points(g, x);
-    for j = 1:size(coord, 1)
-            if(type(j,1) == "stable node")
-                stable_node_array = [stable_node_array, [coord(1,j);coord(2,j);type(j)]];
-                plot3(i, coord(j, 1), coord(j, 2), '.r');
-            else
-                plot3(i, coord(j, 1), coord(j, 2), '.b');
+    if(size(coord,1) > 0)
+        for j = 1:size(type, 1)
+            switch(type(j,1)) 
+                case "stable node"
+                    stable_node_array =     [stable_node_array,      [i; coord(j,1); coord(j,2)]];
+                
+                case"unstable node"
+                    unstable_node_array =   [unstable_node_array,    [i; coord(j,1); coord(j,2)]];
+            
+                case "saddle"
+                    saddle_array =          [saddle_array,           [i; coord(j,1); coord(j,2)]];
+            
+                case "center"
+                    center_array =          [center_array,           [i; coord(j,1); coord(j,2)]];
+            
+                case "unstable focus"
+                    unstable_focus_array =  [unstable_focus_array,   [i; coord(j,1); coord(j,2)]];
+            
+                case "stable focus" 
+                    stable_focus_array =    [stable_focus_array,     [i; coord(j,1); coord(j,2)]];
             end
+        end
     end
-    
 end
+
+figure(1)
+hold on
+plot3(saddle_array(1,:),saddle_array(2,:),saddle_array(3,:), "square",'color', 'k','DisplayName','saddle')
+
+plot3(unstable_node_array(1,:),unstable_node_array(2,:),unstable_node_array(3,:), 'xb','DisplayName','unstable node')
+plot3(stable_node_array(1,:),stable_node_array(2,:),stable_node_array(3,:), 'xr','DisplayName','stable node')
+
+plot3(center_array(1,:),center_array(2,:),center_array(3,:), 'og','DisplayName','center')
+
+plot3(unstable_focus_array(1,:),unstable_focus_array(2,:),unstable_focus_array(3,:), '.b','DisplayName','unstable focus')
+plot3(stable_focus_array(1,:),stable_focus_array(2,:),stable_focus_array(3,:), '.r','DisplayName','stable focus')
+
+legend
 xlabel('a')
 ylabel('x')
 zlabel('y')
