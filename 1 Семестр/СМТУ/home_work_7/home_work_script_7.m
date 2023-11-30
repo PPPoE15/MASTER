@@ -9,10 +9,13 @@ clc, clear, close all
 
 
 
-syms a b fi k
-f1 = a*sin(fi) + b*(sin(fi))^2;
-f1 = simplify(f1)
-r = solve(f1, fi, "ReturnConditions",true)
+syms a b x
+f = (1+a)*x^3 + b*x^2 + a*x
+
+r = simplify(solve(f, x))
+
+rr = simplify(r(2,1)-r(3,1))
+a_bifurc = simplify(solve(rr))
 % f2 = subs(f1, a, 0);
 % f2 = subs(f2, b, 1)
 % fplot(f2)
@@ -23,8 +26,8 @@ r = solve(f1, fi, "ReturnConditions",true)
 % plot(0,0,'*')
 % grid on
 
-df = diff(f1,fi)
-df = simplify(df)
+df = diff(f,x)
+
 
 % 
 % df1 = simplify(subs(df,fi, r.fi(1,1)));
