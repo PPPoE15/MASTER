@@ -2,6 +2,7 @@ function portrait_plotter(sys, points, style)
     n = 20;
     plot(points(:,1),points(:,2), '.', 'MarkerSize', 15, color = 'b')
     hold on
+    grid on
     switch style
         case "points"
             Tspan = [0 20];

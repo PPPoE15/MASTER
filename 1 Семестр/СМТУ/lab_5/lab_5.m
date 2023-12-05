@@ -2,9 +2,9 @@ clc, clear, close all
 syms a x y
 x = [x y];
 
-f = [x(1)^2 - x(2)^2 - 5; a * x(1)^2 + x(2)^2 - 13];
+f = [x(2); -x(1) * (a*(x(2) + 1) + x(1)^2 - 1)];
 
-A = [-1, 3]; % range a
+A = [-0.5, 1.5]; % range a
 nA = 50; % num a points
 
 
