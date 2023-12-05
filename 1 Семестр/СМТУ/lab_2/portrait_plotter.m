@@ -4,12 +4,13 @@ function portrait_plotter(sys, points, style)
     hold on
     switch style
         case "points"
-            Tspan = [0 1];
-            options = odeset('RelTol',1e-1,'AbsTol',1e-1);
+            Tspan = [0 20];
+            %options = odeset('RelTol',1e-1,'AbsTol',1e-1);
             for i = linspace(min(points(:,1)) - 1, max(points(:,1)) + 1, n)
                 for j = linspace(min(points(:,2)) - 1, max(points(:,2)) + 1, n)
                     X0 = [i, j];
-                    [~, x] = ode45(sys,Tspan,X0, options);
+%                     [~, x] = ode45(sys,Tspan,X0, options);
+                    [~, x] = ode45(sys,Tspan,X0);
                     plot(x(:,1),x(:,2), ':', color = 'r');
                 end
             end

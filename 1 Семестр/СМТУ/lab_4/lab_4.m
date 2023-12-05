@@ -1,17 +1,18 @@
 clc, clear, close all
 syms a b x
 
-f = (1+a)*x^3 + b*x^2 + a*x
+f = x*(a-1+2*x^2-x^4)
+%f = (1+a)*x^3 + b*x^2 + a*x
 % f = (a-1)*x-x^2
 % f = x^2 + 0.25*a - 1
 % f = a*sin(x) + b*sin(x)^2;  %  periodic function
 % f = a*x^2 - 2*(a+1)*x + 3*a - 1
 
-A = [-4, 2]; % range a
+A = [-1, 2]; % range a
 nA = 50; % num a points
 B = [-4, 2]; % range b
 nB = 1; % num b points
-mode = 2; % 1 - one parameter, 2 - two parameters
+mode = 1; % 1 - one parameter, 2 - two parameters
 
 switch mode
     case(1)
