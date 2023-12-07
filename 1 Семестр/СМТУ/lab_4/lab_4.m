@@ -1,7 +1,7 @@
 clc, clear, close all
 syms a b x
 
-f = x*(a-1+2*x^2-x^4)
+f = x*(a - 1 + 2*x^2 - b*x^4)
 %f = (1+a)*x^3 + b*x^2 + a*x
 % f = (a-1)*x-x^2
 % f = x^2 + 0.25*a - 1
@@ -11,11 +11,13 @@ f = x*(a-1+2*x^2-x^4)
 A = [-1, 2]; % range a
 nA = 50; % num a points
 B = [-4, 2]; % range b
-nB = 1; % num b points
+nB = 10; % num b points
 mode = 1; % 1 - one parameter, 2 - two parameters
 
 switch mode
     case(1)
+        stable_array = zeros(2,0);
+        unstable_array = zeros(2,0);
         figure(1)
         hold on
         for i = linspace(A(1,1),A(1,2),nA)
@@ -23,18 +25,20 @@ switch mode
             [coord, type] = special_points(g, x);
             for j = 1:size(type, 1)
                 if(type(j,1) == "unstable")
-                    plot(i, coord(j,1), 'b.')
+                    unstable_array =     [unstable_array,      [i; coord(j,1)]];
                 else
-                    plot(i, coord(j,1), 'r.')
+                    stable_array =     [stable_array,      [i; coord(j,1)]];
                 end
             end
         end
+        plot(unstable_array(1,:), unstable_array(2,:), '.b','DisplayName','unstable')
+        plot(stable_array(1,:), stable_array(2,:), '.r','DisplayName','stable')
         xlabel('a')
         ylabel('f')
-        grid on
-        hold off
 
     case(2)
+        stable_array = zeros(3,0);
+        unstable_array = zeros(3,0);
         figure(1)
         hold on
         prog = 1;
@@ -46,19 +50,23 @@ switch mode
                 [coord, type] = special_points(g, x);
                 for j = 1:size(type, 1)
                     if(type(j,1) == "unstable")
-                        plot3(i,k, coord(j,1), 'b.')
+                        unstable_array =     [unstable_array,      [i; k; coord(j,1)]];
                     else
-                        plot3(i,k, coord(j,1), 'r.')
+                        stable_array =     [stable_array,      [i; k; coord(j,1)]];
                     end
                 end
                 prog = prog + 1;
             end
             clc
         end
+        plot3(unstable_array(1,:),unstable_array(2,:),unstable_array(3,:), '.b','DisplayName','unstable')
+        plot3(stable_array(1,:),stable_array(2,:),stable_array(3,:), '.r','DisplayName','stable')
         xlabel('a')
         ylabel('b')
         zlabel('f')
-        grid on
-        hold off
+       
 end
 
+legend
+grid on
+hold off
