@@ -1,8 +1,8 @@
 clear, clc, close all
 
-W0 = 314;% тонн
-N0 = 480;% лс
-v0 = 8.5; %уз
+W0 = 4.6;% тонн
+N0 = 235;% лс
+v0 = 19.5; %уз
 
 W = W0*1000;%кг
 N = N0*735.5;% Вт
@@ -10,7 +10,8 @@ Vmax = v0*0.51;% м/с
 Fmax = N/Vmax;% N = F*v
 A = Fmax/Vmax^2;
 dFmax = 0.2*Fmax;
-dt = 1;
+dt = 0.5;
+
 dPmax = dt*dFmax/Fmax*100;
 dP = 20;
 if (dP >= dPmax)
@@ -27,6 +28,7 @@ x = [0];
 dx = 0;
 e = 0.005; % допустимая погрешность
 
+% разгон
 while ( (Vmax-v(i)) > e)
     t = [t t(i)+dt];
     x = [x x(i)+dx+(P(i)*Fmax*dt^2/100-A*dx*abs(dx))/W];
@@ -59,20 +61,20 @@ while ( v(i) > e)
     i = i + 1;
     dx = x(i)-x(i-1);    
 end
-NVK_active = [t' P' x' v'];% для таблицы
+NVK_aist = [t' P' x' v']; % составление таблицы
 figure(1)
 
 subplot(3,1,1)
 plot(t,x,'Linewidth',1.5); grid on; 
-xlabel('t, c','FontSize',12,'FontWeight','bold'); 
-ylabel('x, м','FontSize',12,'FontWeight','bold');
+xlabel('t, c','FontSize',12); 
+ylabel('x, м','FontSize',12);
 
 subplot(3,1,2)
 plot(t,v,'Linewidth',1.5);grid on; 
-xlabel('t, c','FontSize',12,'FontWeight','bold'); 
-ylabel('v, м/с','FontSize',12,'FontWeight','bold');
+xlabel('t, c','FontSize',12); 
+ylabel('v, м/с','FontSize',12);
 
 subplot(3,1,3)
 plot(t,P,'Linewidth',1.5);grid on; 
-xlabel('t, c','FontSize',12,'FontWeight','bold'); 
-ylabel('P,%','FontSize',12,'FontWeight','bold');
+xlabel('t, c','FontSize',12); 
+ylabel('P,%','FontSize', 12);
