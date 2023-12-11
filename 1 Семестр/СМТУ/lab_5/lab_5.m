@@ -1,10 +1,11 @@
 clc, clear, close all
 syms a x y
 x = [x y];
+M0 = 1;
+I = 1;
+f = [x(2); (M0 + a*x(2))/I];
 
-f = [x(2); -x(1) * (a*(x(2) + 1) + x(1)^2 - 1)];
-
-A = [-0.5, 1.5]; % range a
+A = [-5, 5]; % range a
 nA = 50; % num a points
 
 
