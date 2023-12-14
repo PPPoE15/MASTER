@@ -16,7 +16,7 @@ dFmax = 0.15*Fmax;
 dt = 0.5;
 dPmax = dt*dFmax/Fmax*100;
 Pmax = 100; % максимальная тяга
-dP = 10;
+dP = 15;
 if (dP >= dPmax)
     dP = dPmax;
 end
@@ -36,7 +36,7 @@ prev_e = Vz - v(1);
 %разгон
 A1 = Fmax/v1max^2;
 A2 = Fmax/v2max^2;
-while(t(i) < 100)
+while(t(i) < 30)
     if (v(i)<vk)
         A = Fmax/v1max^2;
     end

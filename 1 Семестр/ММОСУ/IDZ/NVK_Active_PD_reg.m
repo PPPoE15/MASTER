@@ -33,7 +33,7 @@ kd = 80; % коэф ПД регулятора
 
 prev_e = Vz - v(1);
 
-while(t(i) < 100)
+while(t(i) < 30)
     t = [t t(i) + dt];
     x = [x x(i) + dx + ((P(i)*Fmax*dt^2)/100 - A*dx*abs(dx))/W];
     v = [v (x(i+1) - x(i))/dt];
