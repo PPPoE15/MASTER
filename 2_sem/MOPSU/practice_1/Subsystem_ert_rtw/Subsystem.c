@@ -3,9 +3,9 @@
  *
  * Code generated for Simulink model 'Subsystem'.
  *
- * Model version                  : 3.0
+ * Model version                  : 3.1
  * Simulink Coder version         : 9.6 (R2021b) 14-May-2021
- * C/C++ source code generated on : Fri Feb  9 13:26:23 2024
+ * C/C++ source code generated on : Sat Feb 10 18:01:13 2024
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Intel->x86-64 (Windows64)
@@ -41,8 +41,8 @@ void Subsystem_step(void)
    *  Inport: '<Root>/u'
    *  Sum: '<S29>/SumD'
    */
-  rtb_FilterCoefficient = (5.0 * Subsystem_U.u - Subsystem_DW.Filter_DSTATE) *
-    28.0;
+  rtb_FilterCoefficient = (4.5 * Subsystem_U.u - Subsystem_DW.Filter_DSTATE) *
+    40.0;
 
   /* Outport: '<Root>/y' incorporates:
    *  DiscreteIntegrator: '<S34>/Integrator'
@@ -50,7 +50,7 @@ void Subsystem_step(void)
    *  Inport: '<Root>/u'
    *  Sum: '<S43>/Sum'
    */
-  Subsystem_Y.y = (7.0 * Subsystem_U.u + Subsystem_DW.Integrator_DSTATE) +
+  Subsystem_Y.y = (10.5 * Subsystem_U.u + Subsystem_DW.Integrator_DSTATE) +
     rtb_FilterCoefficient;
 
   /* Update for DiscreteIntegrator: '<S29>/Filter' */
@@ -60,7 +60,7 @@ void Subsystem_step(void)
    *  Gain: '<S31>/Integral Gain'
    *  Inport: '<Root>/u'
    */
-  Subsystem_DW.Integrator_DSTATE += 12.0 * Subsystem_U.u * 0.01;
+  Subsystem_DW.Integrator_DSTATE += 11.0 * Subsystem_U.u * 0.01;
 
   /* End of Outputs for SubSystem: '<Root>/Subsystem' */
 }
