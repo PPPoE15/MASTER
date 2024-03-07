@@ -52,9 +52,10 @@ ddelta = det(delta);
 ddelta1 = det(delta1);
 ddelta2 = det(delta2);
 ddelta3 = det(delta3);
-x1 = ddelta1/ddelta;
+x1 = ddelta1/ddelta
 x2 = ddelta2/ddelta
 x3 = ddelta3/ddelta
-t = 0:0.01:20;
-x1 = 2.*exp(-t)+2.*t.*exp(-t);
-plot(t,x1)
+% t = 0:0.01:20;
+% figure(3)
+% x1 = 2.*exp(-t)+2.*t.*exp(-t);
+% plot(t,x1)
