@@ -1,5 +1,5 @@
 [System]
-Name='epochs_50_sugeno'
+Name='sugeno_50'
 Type='sugeno'
 Version=2.0
 NumInputs=2
