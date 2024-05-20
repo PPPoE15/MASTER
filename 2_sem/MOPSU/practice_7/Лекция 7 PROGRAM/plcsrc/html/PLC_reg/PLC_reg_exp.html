@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>RTW Report - PLC_reg.exp</title>
+<link rel="stylesheet" type="text/css" href="rtwreport.css"></link><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+</head>
+<body bgcolor="#eeeeee" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};">
+<p>
+<table border="0" cellspacing="0" cellpadding="6" width="100%%" height="100%%"><tr><td width="100%%" valign="top" bgcolor="#ffffff">
+<h4>File: <a href="file:///plcsrc/PLC_reg.exp" target="rtwreport_document_frame" id="linkToText_plain">PLC_reg.exp</a></h4>
+<pre id="RTWcode">
+<span><a class="LN" name="1">    1   </a><span class="CT">(*</span>
+</span><span><a class="LN" name="2">    2   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="3">    3   </a><span class="CT"> * File: PLC_reg.exp</span>
+</span><span><a class="LN" name="4">    4   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="5">    5   </a><span class="CT"> * IEC 61131-3 Structured Text (ST) code generated for subsystem "PLC_reg/Subsystem"</span>
+</span><span><a class="LN" name="6">    6   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="7">    7   </a><span class="CT"> * Model name                      : PLC_reg</span>
+</span><span><a class="LN" name="8">    8   </a><span class="CT"> * Model version                   : 8.8</span>
+</span><span><a class="LN" name="9">    9   </a><span class="CT"> * Model creator                   : Alex</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model last modified by          : Admin</span>
+</span><span><a class="LN" name="11">   11   </a><span class="CT"> * Model last modified on          : Mon Apr 25 20:59:50 2022</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT"> * Model sample time               : 0.2s</span>
+</span><span><a class="LN" name="13">   13   </a><span class="CT"> * Subsystem name                  : PLC_reg/Subsystem</span>
+</span><span><a class="LN" name="14">   14   </a><span class="CT"> * Subsystem sample time           : 0.2s</span>
+</span><span><a class="LN" name="15">   15   </a><span class="CT"> * Simulink PLC Coder version      : 3.5 (R2021b) 14-May-2021</span>
+</span><span><a class="LN" name="16">   16   </a><span class="CT"> * ST code generated on            : Sun May 12 18:54:34 2024</span>
+</span><span><a class="LN" name="17">   17   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="18">   18   </a><span class="CT"> * Target IDE selection            : 3S CoDeSys 2.3</span>
+</span><span><a class="LN" name="19">   19   </a><span class="CT"> * Test Bench included             : No</span>
+</span><span><a class="LN" name="20">   20   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="21">   21   </a><span class="CT"> *)</span>
+</span><span><a class="LN" name="22">   22   </a><span class="KW">FUNCTION_BLOCK</span> Subsystem
+</span><span><a class="LN" name="23">   23   </a><span class="KW">VAR_INPUT</span>
+</span><span><a class="LN" name="24">   24   </a>    ssMethodType: <span class="KW">SINT</span>;
+</span><span><a class="LN" name="25">   25   </a>    In1: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="26">   26   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="27">   27   </a><span class="KW">VAR_OUTPUT</span>
+</span><span><a class="LN" name="28">   28   </a>    Out1: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="29">   29   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="30">   30   </a><span class="KW">VAR</span>
+</span><span><a class="LN" name="31">   31   </a>    Filter_DSTATE: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="32">   32   </a>    Integrator_DSTATE: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="33">   33   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="34">   34   </a><span class="KW">VAR_TEMP</span>
+</span><span><a class="LN" name="35">   35   </a>    rtb_Gain: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="36">   36   </a>    rtb_FilterCoefficient: <span class="KW">LREAL</span>;
+</span><span><a class="LN" name="37">   37   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="38">   38   </a><span class="KW">CASE</span> ssMethodType <span class="KW">OF</span>
+</span><span><a class="LN" name="39">   39   </a>    SS_INITIALIZE: 
+</span><span><a class="LN" name="40">   40   </a>        <span class="CT">(* SystemInitialize for Atomic SubSystem: '&lt;Root&gt;/Subsystem' *)</span>
+</span><span><a class="LN" name="41">   41   </a>        <span class="CT">(* SystemInitialize for Atomic SubSystem: '<a href="matlab:coder.internal.code2model('PLC_reg:10')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/PLC_reg</i></font></a>' *)</span>
+</span><span><a class="LN" name="42">   42   </a>        <span class="CT">(* InitializeConditions for DiscreteIntegrator: '<a href="matlab:coder.internal.code2model('PLC_reg:1:737')" name="code2model"><font color="#117755"><i>&lt;S30&gt;/Filter</i></font></a>' *)</span>
+</span><span><a class="LN" name="43">   43   </a>        Filter_DSTATE := 0.0;
+</span><span><a class="LN" name="44">   44   </a>        <span class="CT">(* InitializeConditions for DiscreteIntegrator: '<a href="matlab:coder.internal.code2model('PLC_reg:1:843')" name="code2model"><font color="#117755"><i>&lt;S35&gt;/Integrator</i></font></a>' *)</span>
+</span><span><a class="LN" name="45">   45   </a>        Integrator_DSTATE := 0.0;
+</span><span><a class="LN" name="46">   46   </a>        <span class="CT">(* End of SystemInitialize for SubSystem: '<a href="matlab:coder.internal.code2model('PLC_reg:10')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/PLC_reg</i></font></a>' *)</span>
+</span><span><a class="LN" name="47">   47   </a>        <span class="CT">(* End of SystemInitialize for SubSystem: '&lt;Root&gt;/Subsystem' *)</span>
+</span><span><a class="LN" name="48">   48   </a>    SS_STEP: 
+</span><span><a class="LN" name="49">   49   </a>        <span class="CT">(* Outputs for Atomic SubSystem: '&lt;Root&gt;/Subsystem' *)</span>
+</span><span><a class="LN" name="50">   50   </a>        <span class="CT">(* Gain: '<a href="matlab:coder.internal.code2model('PLC_reg:13')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/Gain</i></font></a>' *)</span>
+</span><span><a class="LN" name="51">   51   </a>        rtb_Gain := 10.0 * In1;
+</span><span><a class="LN" name="52">   52   </a>        <span class="CT">(* Outputs for Atomic SubSystem: '<a href="matlab:coder.internal.code2model('PLC_reg:10')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/PLC_reg</i></font></a>' *)</span>
+</span><span><a class="LN" name="53">   53   </a>        <span class="CT">(* Gain: '<a href="matlab:coder.internal.code2model('PLC_reg:1:882')" name="code2model"><font color="#117755"><i>&lt;S38&gt;/Filter Coefficient</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="54">   54   </a><span class="CT">         *  DiscreteIntegrator: '<a href="matlab:coder.internal.code2model('PLC_reg:1:737')" name="code2model"><font color="#117755"><i>&lt;S30&gt;/Filter</i></font></a>'</span>
+</span><span><a class="LN" name="55">   55   </a><span class="CT">         *  Gain: '<a href="matlab:coder.internal.code2model('PLC_reg:1:688')" name="code2model"><font color="#117755"><i>&lt;S29&gt;/Derivative Gain</i></font></a>'</span>
+</span><span><a class="LN" name="56">   56   </a><span class="CT">         *  Sum: '<a href="matlab:coder.internal.code2model('PLC_reg:1:738')" name="code2model"><font color="#117755"><i>&lt;S30&gt;/SumD</i></font></a>' *)</span>
+</span><span><a class="LN" name="57">   57   </a>        rtb_FilterCoefficient := (0.0 - Filter_DSTATE) * 100.0;
+</span><span><a class="LN" name="58">   58   </a>        <span class="CT">(* Outport: '&lt;Root&gt;/Out1' incorporates:</span>
+</span><span><a class="LN" name="59">   59   </a><span class="CT">         *  DiscreteIntegrator: '<a href="matlab:coder.internal.code2model('PLC_reg:1:843')" name="code2model"><font color="#117755"><i>&lt;S35&gt;/Integrator</i></font></a>'</span>
+</span><span><a class="LN" name="60">   60   </a><span class="CT">         *  Gain: '<a href="matlab:coder.internal.code2model('PLC_reg:1:913')" name="code2model"><font color="#117755"><i>&lt;S40&gt;/Proportional Gain</i></font></a>'</span>
+</span><span><a class="LN" name="61">   61   </a><span class="CT">         *  Sum: '<a href="matlab:coder.internal.code2model('PLC_reg:1:3526')" name="code2model"><font color="#117755"><i>&lt;S44&gt;/Sum</i></font></a>' *)</span>
+</span><span><a class="LN" name="62">   62   </a>        Out1 := ((0.004333 * rtb_Gain) + Integrator_DSTATE) + rtb_FilterCoefficient;
+</span><span><a class="LN" name="63">   63   </a>        <span class="CT">(* Update for DiscreteIntegrator: '<a href="matlab:coder.internal.code2model('PLC_reg:1:737')" name="code2model"><font color="#117755"><i>&lt;S30&gt;/Filter</i></font></a>' *)</span>
+</span><span><a class="LN" name="64">   64   </a>        Filter_DSTATE := (0.2 * rtb_FilterCoefficient) + Filter_DSTATE;
+</span><span><a class="LN" name="65">   65   </a>        <span class="CT">(* Update for DiscreteIntegrator: '<a href="matlab:coder.internal.code2model('PLC_reg:1:843')" name="code2model"><font color="#117755"><i>&lt;S35&gt;/Integrator</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="66">   66   </a><span class="CT">         *  Gain: '<a href="matlab:coder.internal.code2model('PLC_reg:1:791')" name="code2model"><font color="#117755"><i>&lt;S32&gt;/Integral Gain</i></font></a>' *)</span>
+</span><span><a class="LN" name="67">   67   </a>        Integrator_DSTATE := ((0.04333 * rtb_Gain) * 0.2) + Integrator_DSTATE;
+</span><span><a class="LN" name="68">   68   </a>        <span class="CT">(* End of Outputs for SubSystem: '<a href="matlab:coder.internal.code2model('PLC_reg:10')" name="code2model"><font color="#117755"><i>&lt;S1&gt;/PLC_reg</i></font></a>' *)</span>
+</span><span><a class="LN" name="69">   69   </a>        <span class="CT">(* End of Outputs for SubSystem: '&lt;Root&gt;/Subsystem' *)</span>
+</span><span><a class="LN" name="70">   70   </a><span class="KW">END_CASE</span>;
+</span><span><a class="LN" name="71">   71   </a><span class="KW">END_FUNCTION_BLOCK</span>
+</span><span><a class="LN" name="72">   72   </a><span class="KW">VAR_GLOBAL</span> <span class="KW">CONSTANT</span>
+</span><span><a class="LN" name="73">   73   </a>    SS_INITIALIZE: <span class="KW">SINT</span> := 0;
+</span><span><a class="LN" name="74">   74   </a>    SS_STEP: <span class="KW">SINT</span> := 1;
+</span><span><a class="LN" name="75">   75   </a><span class="KW">END_VAR</span>
+</span><span><a class="LN" name="76">   76   </a>
+</span></pre>
+</td></tr></table>
+</p>
+</body>
+</html>

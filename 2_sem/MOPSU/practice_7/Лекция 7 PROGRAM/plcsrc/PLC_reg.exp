@@ -1,0 +1,75 @@
+(*
+ *
+ * File: PLC_reg.exp
+ *
+ * IEC 61131-3 Structured Text (ST) code generated for subsystem "PLC_reg/Subsystem"
+ *
+ * Model name                      : PLC_reg
+ * Model version                   : 8.8
+ * Model creator                   : Alex
+ * Model last modified by          : Admin
+ * Model last modified on          : Mon Apr 25 20:59:50 2022
+ * Model sample time               : 0.2s
+ * Subsystem name                  : PLC_reg/Subsystem
+ * Subsystem sample time           : 0.2s
+ * Simulink PLC Coder version      : 3.5 (R2021b) 14-May-2021
+ * ST code generated on            : Sun May 12 18:54:34 2024
+ *
+ * Target IDE selection            : 3S CoDeSys 2.3
+ * Test Bench included             : No
+ *
+ *)
+FUNCTION_BLOCK Subsystem
+VAR_INPUT
+    ssMethodType: SINT;
+    In1: LREAL;
+END_VAR
+VAR_OUTPUT
+    Out1: LREAL;
+END_VAR
+VAR
+    Filter_DSTATE: LREAL;
+    Integrator_DSTATE: LREAL;
+END_VAR
+VAR_TEMP
+    rtb_Gain: LREAL;
+    rtb_FilterCoefficient: LREAL;
+END_VAR
+CASE ssMethodType OF
+    SS_INITIALIZE: 
+        (* SystemInitialize for Atomic SubSystem: '<Root>/Subsystem' *)
+        (* SystemInitialize for Atomic SubSystem: '<S1>/PLC_reg' *)
+        (* InitializeConditions for DiscreteIntegrator: '<S30>/Filter' *)
+        Filter_DSTATE := 0.0;
+        (* InitializeConditions for DiscreteIntegrator: '<S35>/Integrator' *)
+        Integrator_DSTATE := 0.0;
+        (* End of SystemInitialize for SubSystem: '<S1>/PLC_reg' *)
+        (* End of SystemInitialize for SubSystem: '<Root>/Subsystem' *)
+    SS_STEP: 
+        (* Outputs for Atomic SubSystem: '<Root>/Subsystem' *)
+        (* Gain: '<S1>/Gain' *)
+        rtb_Gain := 10.0 * In1;
+        (* Outputs for Atomic SubSystem: '<S1>/PLC_reg' *)
+        (* Gain: '<S38>/Filter Coefficient' incorporates:
+         *  DiscreteIntegrator: '<S30>/Filter'
+         *  Gain: '<S29>/Derivative Gain'
+         *  Sum: '<S30>/SumD' *)
+        rtb_FilterCoefficient := (0.0 - Filter_DSTATE) * 100.0;
+        (* Outport: '<Root>/Out1' incorporates:
+         *  DiscreteIntegrator: '<S35>/Integrator'
+         *  Gain: '<S40>/Proportional Gain'
+         *  Sum: '<S44>/Sum' *)
+        Out1 := ((0.004333 * rtb_Gain) + Integrator_DSTATE) + rtb_FilterCoefficient;
+        (* Update for DiscreteIntegrator: '<S30>/Filter' *)
+        Filter_DSTATE := (0.2 * rtb_FilterCoefficient) + Filter_DSTATE;
+        (* Update for DiscreteIntegrator: '<S35>/Integrator' incorporates:
+         *  Gain: '<S32>/Integral Gain' *)
+        Integrator_DSTATE := ((0.04333 * rtb_Gain) * 0.2) + Integrator_DSTATE;
+        (* End of Outputs for SubSystem: '<S1>/PLC_reg' *)
+        (* End of Outputs for SubSystem: '<Root>/Subsystem' *)
+END_CASE;
+END_FUNCTION_BLOCK
+VAR_GLOBAL CONSTANT
+    SS_INITIALIZE: SINT := 0;
+    SS_STEP: SINT := 1;
+END_VAR
