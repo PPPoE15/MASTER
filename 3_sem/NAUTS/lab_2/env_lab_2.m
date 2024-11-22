@@ -69,9 +69,12 @@ grid
 xlabel("t, s")
 
 %% ka kb
+adapt_control=1;
 ga = [1 0; 0 1];
 gb = 1;
-t = 100;
+ga = ga.*100;
+gb = gb*100;
+t = 40;
 pulse = 1;
 
 result=sim('lab_2.slx');
@@ -87,7 +90,7 @@ plot(time, ka(2,2)*ones(size(time)))
 plot(time, result.kb.Data)
 plot(time, kb(2,1)*ones(size(time)))
 grid
-ylim([-25 20])
+% ylim([-25 20])
 xlabel("t, s")
 legend( ...
     "k_a_1 measured", ...
@@ -99,8 +102,18 @@ legend( ...
 )
 
 
+%% meandr
+pulse = 1;
+adapt_control = 1;
 
-
+result=sim('lab_2.slx');
+figure(4)
+hold on
+time = result.stable.Time;
+plot(time, result.stable.Data)
+plot(time, result.model.Data)
+grid
+legend("system", "model")
 
 
 
