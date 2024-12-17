@@ -14,7 +14,8 @@ c = [1 0];
 p = [-4.5 -4.5];
 K = acker(A,b,p)
 kn = 1 / (-c/(A-b*K)*b);
-L=acker(A',c',p)
+po = p*5; 
+L=acker(A',c',po)
 x1_0 = 0;
 x2_0 = 0;
 
